@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Más Allá del Espacio-Tiempo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Lora', serif; /* Fuente más elegante */
+            color: #e0e0e0;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460); /* Degradado cósmico */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+        body::before { /* Efecto de estrellas */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMuorgvMjAwMC9zdmciPgogICAgPGNpcmNsZIGN4PSIzNSIgY3k9IjQ1IiByPSIwLjgiIGZpbGw9IiNmZmYiLz4KICAgIDxjaXJjbGUgY3g9IjYwIiBjeT0iMjAiIHI9IjAuNiIgZmlsbD0iI2ZmZiIvPgogICAgPGNpcmNsZIGN4PSIzMCIgY3k9IjIwIiByPSIwLjQiIGZpbGw9IiNmZmYiLz4KICAgIDxjaXJjbGUgY3g9IjcwIiBjeT0iNjUiIHI9IjAuNyIgZmlsbD0iI2ZmZiIvPgogICAgPGNpcmNsZIGN4PSIzOCIgY3k9IjcwIiByPSIwLjUiIGZpbGw9IiNmZmYiLz4KICAgIDxjaXJjbGUgY3g9IjkwIiBjeT0iNDgiIHI9IjAuNiIgZmlsbD0iI2ZmZiIvPgogICAgPGNpcmNsZIGN4PSIxNSIgY3k9IjYwIiByPSIwLjUiIGZpbGw9IiNmZmYiLz4KICAgIDxjaXJjbGUgY3g9IjUxIiBjeT0iODEiIHI9IjAuNyIgZmlsbD0iI2ZmZiIvPgogICAgPGNpcmNsZIGN4PSIyMiIgY3k9IjgyIiByPSIwLjYiIGZpbGw9IiNmZmYiLz4KICAgIDxjaXJjbGUgY3g9IjQ1IiBjeT0iMTAiIHI9IjAuNSIgZmlsbD0iI2ZmZiIvPgogICAgPGNpcmNsZIGN4PSIzOCIgY3k9IjM1IiByPSIwLjciIGZpbGw9IiNmZmYiLz4KICAgIDxjaXJjbGUgY3g9IjcyIiBjeT0iMzgiIHI9IjAuNiIgZmlsbD0iI2ZmZiIvPgogICAgPGNpcmNsZIGN4PSI1NSIgY3k9IjY1IiByPSIwLjgiIGZpbGw9IiNmZmYiLz4KICAgIDxjaXJjbGUgY3g9IjEwIiBjeT0iMTUiIHI9IjAuNSIgZmlsbD0iI2ZmZiIvPgogICAgPGNpcmNsZIGN4PSIzIiBjeT0iNzMiIHI9IjAuNyIgZmlsbD0iI2ZmZiIvPgogICAgPGNpcmNsZIGN4PSIxOSIgY3k9IjM0IiByPSIwLjYiIGZpbGw9IiNmZmYiLz4KPC9zdmc+') repeat;
+            opacity: 0.8;
+            pointer-events: none;
+            z-index: -1;
+            animation: twinkle 60s infinite linear;
+        }
+
+        @keyframes twinkle {
+            from { background-position: 0 0; }
+            to { background-position: 10000px 5000px; }
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 20px;
+            max-width: 600px;
+            text-align: center;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            position: relative;
+            z-index: 10;
+        }
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            color: #ffe0b3; /* Tono dorado suave */
+            letter-spacing: 1px;
+        }
+        p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #c0c0c0;
+        }
+        .quote {
+            font-style: italic;
+            margin: 30px 0;
+            padding: 15px;
+            border-left: 3px solid #ffe0b3;
+            color: #ffcc80;
+            font-size: 1.05rem;
+        }
+        .buttons {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px; /* Espacio entre botones */
+            position: relative;
+            height: 50px; /* Para que el botón NO se mueva dentro de un área específica */
+        }
+        button {
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            border-radius: 25px;
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        #yesBtn {
+            background-color: #ff4d6b; /* Rosa-rojo romántico */
+            color: white;
+        }
+        #yesBtn:hover {
+            background-color: #e6394c;
+            transform: translateY(-2px);
+        }
+        #noBtn {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #ffe0b3;
+            position: absolute; /* Para que pueda moverse libremente */
+            left: 50%; /* Posición inicial en el centro */
+            transform: translateX(calc(-50% + 70px)); /* Ajuste para centrar y separar del Sí */
+        }
+        #noBtn:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px) translateX(calc(-50% + 70px));
+        }
+        .hidden { display: none; }
+        #successCard {
+            background: rgba(255, 77, 107, 0.2);
+            border: 1px solid rgba(255, 77, 107, 0.3);
+        }
+        #successCard h1 { color: #ffe0b3; }
+        #successCard p { color: #e0e0e0; }
+
+        /* Estilo para el reproductor de audio */
+        audio {
+            display: none; /* Lo ocultamos, se controlará por JS */
+        }
+        .play-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 100;
+            transition: background 0.3s ease;
+        }
+        .play-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        .play-button svg {
+            fill: #ffe0b3;
+            width: 20px;
+            height: 20px;
+        }
+        .play-button .pause-icon { display: none; } /* Por defecto oculto */
+    </style>
+</head>
+<body>
+
+    <audio id="interstellarAudio" loop preload="auto">
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <div class="play-button" id="audioControl">
+        <svg class="play-icon" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z"/>
+        </svg>
+        <svg class="pause-icon" viewBox="0 0 24 24">
+            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+        </svg>
+    </div>
+
+    <div class="card" id="mainCard">
+        <h1>Una Propuesta Cósmica</h1>
+        <p>Querida [Nombre de tu novia],</p>
+        <p>Desde el primer momento, nuestra interacción ha alterado mis <strong>campos gravitacionales personales</strong>. Tu presencia resuena en cada una de mis partículas elementales.</p>
+        <p>Tal vez la física no tenga una ecuación para esto, pero como dijo alguien una vez:</p>
+        <blockquote class="quote">"El amor es la única cosa que somos capaces de percibir que trasciende las dimensiones del tiempo y del espacio."</blockquote>
+        <p>Así que, en esta singularidad espacio-temporal que llamamos San Valentín, te pregunto:</p>
+        <p>¿Me concederías el honor de trascender juntos esta dimensión y ser mi San Valentín?</p>
+        
+        <div class="buttons">
+            <button id="yesBtn">SÍ, Acepto la Misión</button>
+            <button id="noBtn">NO (Error en la Ecuación)</button>
+        </div>
+    </div>
+
+    <div class="card hidden" id="successCard">
+        <h1>¡Dimensión de Amor Alcanzada! ❤️</h1>
+        <p>¡Eureka\! La ecuación se ha resuelto con una solución hermosa.</p>
+        <p>Nuestra trayectoria conjunta acaba de definirse. Prepárate para exploraciones intergalácticas (o al menos, una cena increíble).</p>
+        <p><i>Iniciando secuencia de teletransporte (te recojo a las...)</i></p>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        const mainCard = document.getElementById('mainCard');
+        const successCard = document.getElementById('successCard');
+        const interstellarAudio = document.getElementById('interstellarAudio');
+        const audioControl = document.getElementById('audioControl');
+        const playIcon = document.querySelector('.play-icon');
+        const pauseIcon = document.querySelector('.pause-icon');
+
+        let isPlaying = false;
+
+        // Reproducir/Pausar audio con el botón
+        audioControl.addEventListener('click', () => {
+            if (isPlaying) {
+                interstellarAudio.pause();
+                playIcon.style.display = 'block';
+                pauseIcon.style.display = 'none';
+            } else {
+                interstellarAudio.play();
+                playIcon.style.display = 'none';
+                pauseIcon.style.display = 'block';
+            }
+            isPlaying = !isPlaying;
+        });
+
+        // Intentar reproducir automáticamente (muchos navegadores lo bloquean, por eso el botón)
+        // interstellarAudio.play().catch(e => console.log("Auto-play blocked, user interaction needed."));
+
+        // El botón "No" huye como una partícula cuántica inobservable
+        noBtn.addEventListener('mouseover', () => {
+            // Mueve el botón 'No' a una posición aleatoria dentro de un área controlada
+            const parentRect = noBtn.parentElement.getBoundingClientRect(); // Área donde se moverá
+            const btnRect = noBtn.getBoundingClientRect();
+
+            let newX = Math.random() * (parentRect.width - btnRect.width);
+            let newY = Math.random() * (parentRect.height - btnRect.height);
+
+            // Asegurar que no se salga de los límites del botón 'Sí' o del contenedor
+            // Esto es más complejo para posicionamiento absoluto, una solución simple:
+            // Calcular un rango de movimiento dentro del contenedor principal de botones
+            const randomXOffset = Math.random() * 150 - 75; // -75 a +75 px
+            const randomYOffset = Math.random() * 50 - 25;  // -25 a +25 px
+
+            noBtn.style.transform = `translate(calc(-50% + 70px + ${randomXOffset}px), ${randomYOffset}px)`;
+            noBtn.style.transition = 'transform 0.2s ease-out'; // Suaviza el movimiento
+            setTimeout(() => { noBtn.style.transition = 'none'; }, 200); // Restaura la transición
+        });
+
+        yesBtn.addEventListener('click', () => {
+            mainCard.classList.add('hidden');
+            successCard.classList.remove('hidden');
+            // Si el audio estaba sonando, lo dejamos, si no, lo iniciamos en la victoria
+            if (!isPlaying) {
+                 interstellarAudio.play();
+                 isPlaying = true;
+                 playIcon.style.display = 'none';
+                 pauseIcon.style.display = 'block';
+            }
+        });
+
+        // Mensaje para ella al cargar la página
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                alert("¡Iniciando simulación de singularidad temporal! Presiona OK para continuar.");
+            }, 500);
+        });
+
+    </script>
+</body>
+</html>
