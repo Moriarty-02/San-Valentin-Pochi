@@ -11,64 +11,136 @@
             padding: 0;
             font-family: 'Lora', serif;
             color: #e0e0e0;
-            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            background: radial-gradient(circle at center, #1b2735 0%, #090a0f 100%);
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start; /* Empieza arriba para permitir scroll */
+            justify-content: flex-start;
             min-height: 100vh;
             overflow-x: hidden; 
-            overflow-y: auto;   /* ACTIVA EL SCROLL */
+            overflow-y: auto;
             position: relative;
-            padding: 40px 10px; /* Margen para que no pegue a las orillas */
+            padding: 40px 10px;
             box-sizing: border-box;
         }
-        body::before {
-            content: '';
-            position: fixed; /* Las estrellas se quedan quietas al bajar */
+
+        /* Animación de estrellas mejorada */
+        .stars-container {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMuorgvMjAwMC9zdmciPgogICAgPGNpcmNsZIGN4PSIzNSIgY3k9IjQ1IiByPSIwLjgiIGZpbGw9IiNmZmYiLz4KICAgIDxjaXJjbGUgY3g9IjYwIiBjeT0iMjAiIHI9IjAuNiIgZmlsbD0iI2ZmZiIvPgogICAgPGNpcmNsZIGN4PSIzMCIgY3k9IjIwIiByPSIwLjQiIGZpbGw9IiNmZmYiLz4KICAgIDxjaXJjbGUgY3g9IjcwIiBjeT0iNjUiIHI9IjAuNyIgZmlsbD0iI2ZmZiIvPgogICAgPGNpcmNsZIGN4PSIzOCIgY3k9IjcwIiByPSIwLjUiIGZpbGw9IiNmZmYiLz4KICAgIDxjaXJjbGUgY3g9IjkwIiBjeT0iNDgiIHI9IjAuNiIgZmlsbD0iI2ZmZiIvPgogICAgPGNpcmNsZIGN4PSIxNSIgY3k9IjYwIiByPSIwLjUiIGZpbGw9IiNmZmYiLz4KICAgIDxjaXJjbGUgY3g9IjUxIiBjeT0iODEiIHI9IjAuNyIgZmlsbD0iI2ZmZiIvPgogICAgPGNpcmNsZIGN4PSIyMiIgY3k9IjgyIiByPSIwLjYiIGZpbGw9IiNmZmYiLz4KICAgIDxjaXJjbGUgY3g9IjQ1IiBjeT0iMTAiIHI9IjAuNSIgZmlsbD0iI2ZmZiIvPgogICAgPGNpcmNsZIGN4PSIzOCIgY3k9IjM1IiByPSIwLjciIGZpbGw9IiNmZmYiLz4KICAgIDxjaXJjbGUgY3g9IjcyIiBjeT0iMzgiIHI9IjAuNiIgZmlsbD0iI2ZmZiIvPgogICAgPGNpcmNsZIGN4PSI1NSIgY3k9IjY1IiByPSIwLjgiIGZpbGw9IiNmZmYiLz4KICAgIDxjaXJjbGUgY3g9IjEwIiBjeT0iMTUiIHI9IjAuNSIgZmlsbD0iI2ZmZiIvPgogICAgPGNpcmNsZIGN4PSIzIiBjeT0iNzMiIHI9IjAuNyIgZmlsbD0iI2ZmZiIvPgogICAgPGNpcmNsZIGN4PSIxOSIgY3k9IjM0IiByPSIwLjYiIGZpbGw9IiNmZmYiLz4KPC9zdmc+') repeat;
-            opacity: 0.8;
-            pointer-events: none;
             z-index: -1;
-            animation: twinkle 60s infinite linear;
+            background: transparent;
+        }
+
+        .stars-container::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 200%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 50px 160px, #ddd, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 90px 40px, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 130px 80px, #fff, rgba(0,0,0,0));
+            background-repeat: repeat;
+            background-size: 200px 200px;
+            animation: moveStars 100s linear infinite, twinkle 4s ease-in-out infinite alternate;
+            opacity: 0.5;
+        }
+
+        @keyframes moveStars {
+            from { transform: translateY(0); }
+            to { transform: translateY(-50%); }
         }
 
         @keyframes twinkle {
-            from { background-position: 0 0; }
-            to { background-position: 10000px 5000px; }
+            from { opacity: 0.3; }
+            to { opacity: 0.8; }
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
             border-radius: 20px;
             padding: 30px;
             margin-bottom: 20px;
             max-width: 500px;
             width: 100%;
             text-align: center;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             z-index: 10;
+            transition: transform 0.3s ease;
         }
-        h1 { font-family: 'Montserrat', sans-serif; font-size: 1.8rem; margin-bottom: 20px; color: #ffe0b3; }
-        p { font-size: 1.1rem; line-height: 1.6; margin-bottom: 15px; color: #c0c0c0; }
-        .quote { font-style: italic; margin: 20px 0; padding: 10px; border-left: 3px solid #ffe0b3; color: #ffcc80; font-size: 1rem; }
-        .buttons { margin-top: 20px; display: flex; flex-direction: column; align-items: center; gap: 20px; position: relative; min-height: 150px; }
-        button { padding: 12px 30px; font-size: 1.1rem; border-radius: 25px; border: none; font-weight: bold; cursor: pointer; transition: 0.3s; }
-        #yesBtn { background-color: #ff4d6b; color: white; width: 200px; }
-        #noBtn { background-color: rgba(255, 255, 255, 0.2); color: #ffe0b3; width: 200px; position: absolute; }
+
+        h1 { font-family: 'Montserrat', sans-serif; font-size: 1.8rem; margin-bottom: 20px; color: #ffe0b3; text-shadow: 0 0 10px rgba(255, 224, 179, 0.3); }
+        p { font-size: 1.1rem; line-height: 1.6; margin-bottom: 15px; color: #d1d1d1; }
+        .quote { font-style: italic; margin: 20px 0; padding: 15px; border-left: 3px solid #ffe0b3; background: rgba(255, 224, 179, 0.05); color: #ffcc80; font-size: 1rem; }
+        
+        .buttons { 
+            margin-top: 20px; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            gap: 20px; 
+            position: relative; 
+            min-height: 200px; 
+            width: 100%;
+        }
+
+        button { 
+            padding: 12px 30px; 
+            font-size: 1.1rem; 
+            border-radius: 25px; 
+            border: none; 
+            font-weight: bold; 
+            cursor: pointer; 
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        #yesBtn { background-color: #ff4d6b; color: white; width: 220px; z-index: 11; }
+        #yesBtn:hover { transform: scale(1.1); background-color: #ff2a4d; box-shadow: 0 0 20px rgba(255, 77, 107, 0.5); }
+
+        #noBtn { 
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #ffe0b3; 
+            width: 200px; 
+            position: absolute; 
+            z-index: 12;
+            border: 1px solid rgba(255, 224, 179, 0.3);
+        }
+
         .hidden { display: none; }
-        #successCard { background: rgba(255, 77, 107, 0.2); }
-        .play-button { position: fixed; top: 20px; right: 20px; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 50%; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; z-index: 100; cursor: pointer; }
+        #successCard { background: rgba(255, 77, 107, 0.1); border: 1px solid rgba(255, 77, 107, 0.3); }
+
+        .play-button { 
+            position: fixed; 
+            top: 20px; 
+            right: 20px; 
+            background: rgba(255, 255, 255, 0.1); 
+            border: 1px solid rgba(255, 255, 255, 0.2); 
+            border-radius: 50%; 
+            width: 45px; 
+            height: 45px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            z-index: 100; 
+            cursor: pointer; 
+        }
         .play-button svg { fill: #ffe0b3; width: 24px; height: 24px; }
     </style>
 </head>
 <body>
+
+    <div class="stars-container"></div>
 
     <audio id="interstellarAudio" loop preload="auto">
         <source src="https://github.com/Moriarty-02/San-Valentin-Pochi/raw/refs/heads/main/interestellar.mp3" type="audio/mpeg">
@@ -80,7 +152,7 @@
     </div>
 
     <div class="card" id="mainCard">
-        <h1>Una Propuesta Cósmica</h1>
+        <h1>Propuesta para mi chaparrita hermosa</h1>
         <p>Querida Pochilonga,</p>
         <p>Desde el primer momento, nuestra interacción ha alterado mis <strong>pensamientos como campos gravitacionales personales</strong>. Tu presencia resuena en cada una de mis partículas elementales.</p>
         <p>Tal vez la física no tenga una ecuación para esto, pero como dijo alguien una vez:</p>
@@ -88,7 +160,7 @@
         <p>Así que, en esta singularidad espacio-temporal que llamamos San Valentín, te pregunto, amor mío:</p>
         <p>¿Me concederías el honor de ser mi San Valentín?</p>
         
-        <div class="buttons">
+        <div class="buttons" id="buttonArea">
             <button id="yesBtn">SÍ, Acepto</button>
             <button id="noBtn">NO (Piénsalo bien)</button>
         </div>
@@ -113,7 +185,9 @@
 
         let isPlaying = false;
 
-        audioControl.addEventListener('click', () => {
+        audioControl.addEventListener('click', toggleAudio);
+
+        function toggleAudio() {
             if (isPlaying) {
                 audio.pause();
                 playIcon.style.display = 'block';
@@ -124,23 +198,40 @@
                 pauseIcon.style.display = 'block';
             }
             isPlaying = !isPlaying;
-        });
+        }
 
+        // Rango de movimiento masivo para el botón NO
         noBtn.addEventListener('mouseover', () => {
-            const x = Math.random() * 150 - 75;
-            const y = Math.random() * 100 - 50;
-            noBtn.style.transform = `translate(${x}px, ${y}px)`;
+            const padding = 50;
+            // Calculamos posiciones aleatorias en gran parte de la pantalla visible
+            const maxX = window.innerWidth - noBtn.offsetWidth - padding;
+            const maxY = window.innerHeight - noBtn.offsetHeight - padding;
+            
+            // Generar coordenadas aleatorias
+            const randomX = Math.max(padding, Math.floor(Math.random() * maxX));
+            const randomY = Math.max(padding, Math.floor(Math.random() * maxY));
+
+            // Aplicamos posición fija para que pueda moverse por TODO el viewport
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+            
+            // Añadir un pequeño efecto de escala para que se vea más escurridizo
+            noBtn.style.transform = `scale(${0.8 + Math.random() * 0.4})`;
         });
 
         yesBtn.addEventListener('click', () => {
             mainCard.classList.add('hidden');
             successCard.classList.remove('hidden');
-            if (!isPlaying) audio.play();
-            window.scrollTo(0, 0); // Sube al inicio al ganar
+            noBtn.classList.add('hidden');
+            if (!isPlaying) toggleAudio();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
         window.addEventListener('load', () => {
-            setTimeout(() => { alert("¡Iniciando simulación de singularidad temporal!"); }, 500);
+            setTimeout(() => { 
+                alert("¡Iniciando simulación de singularidad temporal!"); 
+            }, 500);
         });
     </script>
 </body>
